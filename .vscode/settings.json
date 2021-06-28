@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.env.osx": {
+        "PATH": "/Users/sean/.platformio/penv/bin:/Users/sean/.platformio/penv:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sean/Documents:/Users/sean/Documents/apache-maven-3.6.1/bin",
+        "PLATFORMIO_CALLER": "vscode"
+    }
+}
