@@ -18,18 +18,57 @@ ESP8266WebServer server(80);
 int ledPin = 16; //0 is the built in RED LED on the NodeMCU...but when we use the arduino libraries, the pin numbers are different so it is 16 in this case
 bool ledOn = false;
 int mycounter = 0;
-int webSendDelay = 5000;
+int webSendDelay = 1000;
 bool clientConnected = false;
 bool voltageGood = true;
 int voltageCount = 0;
 bool serialMsgSent = true;
 
-float goodVoltage = 12.00;
-int v1Pin = 0;
-int v2Pin = 1;
+float goodVoltage = 12.06; //12.06 is approximately 50% of battery left
+int v1Pin = A0;
+int v2Pin = D1;
+
+int buzzerPin = D2;
+bool buzzerOn = false;
 
 int delaySpeed = 1;
 //int delaySpeed = 1000;
+
+void toggleLED() {
+  if (ledOn) {
+    digitalWrite(ledPin, HIGH);
+    //Serial.println("toggleLED() ~ led off");
+    ledOn = false;
+  } else {
+    digitalWrite(ledPin, LOW);
+    //Serial.println("toggleLED() ~ led on");
+    ledOn = true;
+  }
+}
+
+void ledOff() {
+  digitalWrite(ledPin, HIGH);
+  //Serial.println("ledOff() ~ led off");
+  ledOn = false;
+}
+
+void toggleBuzzer() {
+  if (buzzerOn) {
+    digitalWrite(buzzerPin, LOW);
+    //Serial.println("toggleBuzzer() ~ buzzer off");
+    buzzerOn = false;
+  } else {
+    digitalWrite(buzzerPin, HIGH);
+    //Serial.println("toggleBuzzer() ~ buzzer on");
+    buzzerOn = true;
+  }
+}
+
+void buzzerOff() {
+  digitalWrite(buzzerPin, LOW);
+  //Serial.println("buzzerOff() ~ buzzer off");
+  buzzerOn = false;
+}
 
 void handleRoot()
 {
@@ -106,19 +145,23 @@ void readVoltageOne() {
   String s3 = " | analogVal=";
   s3 = s3 + v;
   msg = msg + s3;
-  Serial.println(msg);
+  Serial.print(msg);
 
   if (v3 > goodVoltage) {
     voltageGood = true;
     voltageCount = 0;
-    Serial.println("V1 is good");
+    Serial.println(" | V1 is good");
+    buzzerOff();
+    ledOff();
   } else {
     voltageCount++;
     if (voltageCount > 3) {
       voltageGood = false;
       //Serial.println("V1 is BAAAD");
     }
-    Serial.println("V1 is BAAAD");
+    Serial.println(" | V1 is BAAAD");
+    toggleBuzzer();
+    toggleLED();
   }
 
   if (clientConnected) {
@@ -138,38 +181,40 @@ void readVoltageTwo() {
   String s3 = " | analogVal=";
   s3 = s3 + v;
   msg = msg + s3;
-  Serial.println(msg);
+  Serial.print(msg);
 
   if (v3 > goodVoltage) {
     voltageGood = true;
     voltageCount = 0;
-    Serial.println("V2 is good");
+    Serial.println(" | V2 is good");
   } else {
     voltageCount++;
     if (voltageCount > 3) {
       voltageGood = false;
       //Serial.println("V2 is BAAAD");
     }
-    Serial.println("V2 is BAAAD");
+    Serial.println(" | V2 is BAAAD");
   }
 
   if (clientConnected) {
     // 800 = 12.36v
     // 74 = 1.167v
-    webSocket.sendTXT(0, msg);
+    //webSocket.sendTXT(0, msg);
   }
 }
 
-void setup()
-{
+void setup() {
   delay(1000);
   Serial.begin(9600);
   pinMode(ledPin, OUTPUT);
-  digitalWrite(ledPin, HIGH);
+  ledOff();
 
   //Setup voltage read
-  pinMode(A0, INPUT);
-  
+  pinMode(v1Pin, INPUT);
+  pinMode(v2Pin, INPUT);
+
+  pinMode(buzzerPin, OUTPUT);
+
   //Setup WIFI
   Serial.println("setup() ~ Configuring access point...");
   //WiFi.mode(WIFI_AP);
@@ -189,8 +234,7 @@ void setup()
   Serial.println(myIP);
 }
 
-void loop()
-{
+void loop() {
   server.handleClient();
   webSocket.loop();
 
