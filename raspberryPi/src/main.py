@@ -23,6 +23,7 @@ time_updates = time.time();
 def check_for_notification():
     func.log('main.py', 'check_for_notification', 'start');
     rec_buff = '';
+    resp = "";
     try:
         time.sleep(0.25);
         if serInput.inWaiting():
