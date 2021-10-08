@@ -59,7 +59,7 @@ String getVoltageThree() {
   float v2 = v / 6.56;
   float v3 = v2 / 10;
 
-  String s = "V2:";
+  String s = "V3:";
   String msg = s + v3;
   String s3 = "|analogVal:";
   s3 = s3 + v;
@@ -73,7 +73,7 @@ String getVoltageFour() {
   float v2 = v / 6.56;
   float v3 = v2 / 10;
 
-  String s = "V2:";
+  String s = "V4:";
   String msg = s + v3;
   String s3 = "|analogVal:";
   s3 = s3 + v;

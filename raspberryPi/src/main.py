@@ -21,7 +21,7 @@ time_updates = time.time();
 
 
 def check_for_notification():
-    func.log('main.py', 'check_for_notification', 'start');
+    #func.log('main.py', 'check_for_notification', 'start');
     rec_buff = '';
     resp = "";
     try:
@@ -49,7 +49,7 @@ def check_for_notification():
     except:
         func.log('main.py', 'check_for_notification', 'Exception (' + str(sys.exc_info()) + ') has been caught.');
 
-    func.log('main.py', 'check_for_notification', 'end');
+    #func.log('main.py', 'check_for_notification', 'end');
     return resp;
 
 def shutdown():
