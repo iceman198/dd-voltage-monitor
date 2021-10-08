@@ -40,7 +40,7 @@ def check_for_notification():
                 vardummy = "";
             func.log('main.py', 'check_for_notification', 'rec_buff: ' + rec_buff.decode());
     except:
-        func.log('main.py', 'check_for_notification', 'Exception (' + str(sys.exc_info()[0]) + ') has been caught.');
+        func.log('main.py', 'check_for_notification', 'Exception (' + str(sys.exc_info()) + ') has been caught.');
 
     func.log('main.py', 'check_for_notification', 'end');
     return resp;
