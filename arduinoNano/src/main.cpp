@@ -5,52 +5,81 @@ bool ledOn = false;
 int mycounter = 0;
 
 int v1Pin = A0;
-int v2Pin = D1;
+int v2Pin = A1;
+int v3Pin = A2;
+int v4Pin = A3;
 
-int delaySpeed = 1;
+int delaySpeed = 1000;
 
 void toggleLED() {
   if (ledOn) {
     digitalWrite(ledPin, HIGH);
-    //Serial.println("toggleLED() ~ led off");
     ledOn = false;
   } else {
     digitalWrite(ledPin, LOW);
-    //Serial.println("toggleLED() ~ led on");
     ledOn = true;
   }
 }
 
 void ledOff() {
   digitalWrite(ledPin, HIGH);
-  //Serial.println("ledOff() ~ led off");
   ledOn = false;
 }
 
-void readVoltageOne() {
+String getVoltageOne() {
   int v = analogRead(v1Pin);
   float v2 = v / 6.56;
   float v3 = v2 / 10;
 
-  String s = "V1=";
+  String s = "V1:";
   String msg = s + v3;
-  String s3 = " | analogVal=";
+  String s3 = "|analogVal:";
   s3 = s3 + v;
   msg = msg + s3;
-  Serial.print(msg);
+  //Serial.print(msg);
+  return msg;
 }
 
-void readVoltageTwo() {
+String getVoltageTwo() {
   int v = analogRead(v2Pin);
   float v2 = v / 6.56;
   float v3 = v2 / 10;
 
-  String s = "V2=";
+  String s = "V2:";
   String msg = s + v3;
-  String s3 = " | analogVal=";
+  String s3 = "|analogVal:";
   s3 = s3 + v;
   msg = msg + s3;
-  Serial.print(msg);
+  //Serial.print(msg);
+  return msg;
+}
+
+String getVoltageThree() {
+  int v = analogRead(v3Pin);
+  float v2 = v / 6.56;
+  float v3 = v2 / 10;
+
+  String s = "V2:";
+  String msg = s + v3;
+  String s3 = "|analogVal:";
+  s3 = s3 + v;
+  msg = msg + s3;
+  //Serial.print(msg);
+  return msg;
+}
+
+String getVoltageFour() {
+  int v = analogRead(v4Pin);
+  float v2 = v / 6.56;
+  float v3 = v2 / 10;
+
+  String s = "V2:";
+  String msg = s + v3;
+  String s3 = "|analogVal:";
+  s3 = s3 + v;
+  msg = msg + s3;
+  //Serial.print(msg);
+  return msg;
 }
 
 void setup() {
@@ -62,10 +91,12 @@ void setup() {
   //Setup voltage read
   pinMode(v1Pin, INPUT);
   pinMode(v2Pin, INPUT);
+  pinMode(v3Pin, INPUT);
+  pinMode(v4Pin, INPUT);
 }
 
 void loop() {
-  readVoltageOne();
-  readVoltageTwo();
+  String myMsg = getVoltageOne() + "," + getVoltageTwo() + "," + getVoltageThree() + "," + getVoltageFour();
+  Serial.println(myMsg);
   delay(delaySpeed);
 }
