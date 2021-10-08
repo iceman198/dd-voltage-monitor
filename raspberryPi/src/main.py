@@ -12,7 +12,7 @@ import func;
 
 doLoop = True;
 
-serInput = serial.Serial('/dev/ttyUSB0',9600,timeout=0.1);
+serInput = serial.Serial('/dev/serial1',9600,timeout=0.1);
 serInput.flushInput();
 
 app = Flask(__name__);
