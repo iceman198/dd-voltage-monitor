@@ -29,7 +29,7 @@ def check_for_notification():
         if serInput.inWaiting():
             time.sleep(0.01);
             rec_buff = serInput.read(serInput.inWaiting());
-        resp = str(rec_buff.decode());
+            resp = str(rec_buff.decode());
 
         if len(resp) > 0:
             if "S" in rec_buff.decode():
