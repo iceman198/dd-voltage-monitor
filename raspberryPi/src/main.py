@@ -11,7 +11,7 @@ from threading import Thread;
 import func;
 
 doLoop = True;
-mydelay = 500;
+mydelay = 0.5;
 
 serInput = serial.Serial('/dev/serial1',9600,timeout=0.1);
 serInput.flushInput();
@@ -78,7 +78,7 @@ def main_loop():
     while doLoop:
         try:
             timediff = time.time() - time_updates;
-            func.log('main.py', 'myloop', 'Current time ' + str(time.time()) + ' with a timediff of ' + str(timediff));
+            #func.log('main.py', 'myloop', 'Current time ' + str(time.time()) + ' with a timediff of ' + str(timediff));
             if (timediff > mydelay):
                 check_for_notification();
                 time_updates = time.time();
