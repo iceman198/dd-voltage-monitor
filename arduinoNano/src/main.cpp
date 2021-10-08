@@ -89,10 +89,10 @@ void setup() {
   ledOff();
 
   //Setup voltage read
-  pinMode(v1Pin, INPUT);
-  pinMode(v2Pin, INPUT);
-  pinMode(v3Pin, INPUT);
-  pinMode(v4Pin, INPUT);
+  //pinMode(v1Pin, INPUT);
+  //pinMode(v2Pin, INPUT);
+  //pinMode(v3Pin, INPUT);
+  //pinMode(v4Pin, INPUT);
 }
 
 void loop() {
