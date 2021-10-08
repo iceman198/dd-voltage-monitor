@@ -17,6 +17,8 @@ serInput = serial.Serial('/dev/serial1',9600,timeout=0.1);
 serInput.flushInput();
 
 app = Flask(__name__);
+time_updates = time.time();
+
 
 def check_for_notification():
     func.log('main.py', 'check_for_notification', 'start');
@@ -72,13 +74,13 @@ def flask_jsontest():
     return jsonify(resp_obj);
 
 def main_loop():
-    global doLoop;
-    time_updates = time.time();
+    global doLoop, time_updates;
     while doLoop:
         try:
             #func.log('main.py', 'myloop', 'looping...');s
             if (time.time() - time_updates > mydelay):
                 check_for_notification();
+                time_updates = time.time();
         except:
             func.log('main.py', 'main_loop', 'Exception: ' + str(sys.exc_info()));
 
