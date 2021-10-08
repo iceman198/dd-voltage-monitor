@@ -17,3 +17,14 @@ pip3 install pyserial
 
 # Other info
 To be able to shutdown as pi users via python: https://peppe8o.com/shutdown-button-with-raspberry-pi-and-python/
+
+## Run on pi on reboot
+Setup crontab to run at boot.  Run
+```
+crontab -e
+```
+
+Add the following to the bottom of the file (update the path as needed!)
+```
+@reboot sudo python3 /home/pi/YOUR_CLONE_PATH/raspberryPi/src/main.py > /dev/null 2>&1 &
+```
