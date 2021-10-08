@@ -77,8 +77,9 @@ def main_loop():
     global doLoop, time_updates;
     while doLoop:
         try:
-            #func.log('main.py', 'myloop', 'looping...');s
-            if (time.time() - time_updates > mydelay):
+            timediff = time.time() - time_updates;
+            func.log('main.py', 'myloop', 'Current time ' + str(time.time()) + ' with a timediff of ' + str(timediff));
+            if (timediff > mydelay):
                 check_for_notification();
                 time_updates = time.time();
         except:

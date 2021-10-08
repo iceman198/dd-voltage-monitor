@@ -1,0 +1,112 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--<meta name="viewport" content="width=300, initial-scale=5, maximum-scale=8.0, minimum-scale=3, user-scalable=0">-->
+
+    <!-- <link rel="stylesheet" href="../static/style.css"> -->
+    <!-- <script src="../static/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+
+    <title>PiPhone</title>
+    <script type = "text/javascript">
+        let inCall = false;
+
+        async function makeWebCall(address, data) {
+            return new Promise(async (resolve, reject) => {
+                if (data != null) {
+                    resolve(null);
+                } else {
+                    const response = await fetch(address).then(async (response) => {
+                        const myJson = await response.json();
+                        //console.log(`makeWebCall() ~ response: ${JSON.stringify(myJson)}`);
+                        resolve(myJson);
+                    }).catch((err) => {
+                        //console.log(`makeWebCall() ~ Error making webcall: ${JSON.stringify(err)}`);
+                        resolve(null);
+                    });
+                }
+            });
+        }
+
+        async function shutdown() {
+            const response = await makeWebCall('http://localhost:5000/shutdown/');
+            console.log(`shutdown() ~ response: ${JSON.stringify(response)}`);
+        }
+
+        async function pushNumber(number) {
+            if (number.indexOf('H') > -1) {
+                inCall = false;
+                const response = await makeWebCall('http://localhost:5000/hangup/');
+                console.log(`pushNumber() ~ number: ${number} | response: ${JSON.stringify(response)}`);
+                document.getElementById("dialerText").innerHTML = '';
+            } else if (number.indexOf('A') > -1) {
+                inCall = true;
+                let currentNumbers = document.getElementById("dialerText").innerHTML;
+                if (currentNumbers == '') {                    
+                    const response = await makeWebCall('http://localhost:5000/answer/');
+                    console.log(`pushNumber() ~ answering call - response: ${JSON.stringify(response)}`);
+                } else {
+                    const response = await makeWebCall('http://localhost:5000/makecall/' + currentNumbers);
+                    console.log(`pushNumber() ~ calling ${currentNumbers} - response: ${JSON.stringify(response)}`);
+                }
+            } else {
+                if (inCall) {
+                    // send tone with number
+                    const response = await makeWebCall('http://localhost:5000/sendtone/'+number);
+                    console.log(`getStats() ~ response: ${JSON.stringify(response)}`);
+                } else {
+                    // just add the number to the list in preperation for a call
+                    let currentNumbers = document.getElementById("dialerText").innerHTML;
+                    currentNumbers = `${currentNumbers}${number}`;
+                    document.getElementById("dialerText").innerHTML = currentNumbers;
+                }
+            }
+
+
+        }
+
+        async function getStats() {
+            const response = await makeWebCall('http://localhost:5000/getStats/');
+            console.log(`getStats() ~ response: ${JSON.stringify(response)}`);
+            if (response != null && response.status != null && response.status == "SUCCESS") {
+                if (response.voltage != null) { document.getElementById("voltage").innerHTML = response.voltage; }
+                if (response.signal != null) { document.getElementById("signal").innerHTML = response.signal; }
+                if (response.network != null) { document.getElementById("network").innerHTML = response.network; }
+                if (response.callstatus != null) { document.getElementById("callstatus").innerHTML = response.callstatus; }
+            }
+        }
+
+        setInterval(getStats, 2000);
+
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div id="callstatus"></div>
+            <div id="stats">
+                <div id="voltage"></div>
+                <div id="signal"></div>
+                <div id="network"></div>
+            </div>
+            <div id="dialerText"></div>
+        </header>
+        <div class="content">
+            <div class="dialer">
+                <table>
+                    <tr><td><button style="width:100%;" onclick="pushNumber('1')">1</button></td><td><button style="width:100%;" onclick="pushNumber('2')">2</button></td><td><button style="width:100%;" onclick="pushNumber('3')">3</button></td></tr>
+                    <tr><td><button style="width:100%;" onclick="pushNumber('4')">4</button></td><td><button style="width:100%;" onclick="pushNumber('5')">5</button></td><td><button style="width:100%;" onclick="pushNumber('6')">6</button></td></tr>
+                    <tr><td><button style="width:100%;" onclick="pushNumber('7')">7</button></td><td><button style="width:100%;" onclick="pushNumber('8')">8</button></td><td><button style="width:100%;" onclick="pushNumber('9')">9</button></td></tr>
+                    <tr><td><button style="width:100%;" onclick="pushNumber('*')">*</button></td><td><button style="width:100%;" onclick="pushNumber('0')">0</button></td><td><button style="width:100%;" onclick="pushNumber('#')">#</button></td></tr>
+                    <tr><td><button style="width:100%;" onclick="pushNumber('H')">H</button></td><td>&nbsp;</td><td><button style="width:100%;" onclick="pushNumber('A')">A</button></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+		<button onclick="shutdown()">shutdown</button>
+    </footer>
+</body>
+
+</html>

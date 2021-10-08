@@ -13,3 +13,7 @@ sudo apt-get install python3-pip
 ```
 pip3 install pyserial
 ```
+
+
+# Other info
+To be able to shutdown as pi users via python: https://peppe8o.com/shutdown-button-with-raspberry-pi-and-python/
