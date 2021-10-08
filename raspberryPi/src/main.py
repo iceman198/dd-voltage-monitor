@@ -30,6 +30,13 @@ def check_for_notification():
             time.sleep(0.01);
             rec_buff = serInput.read(serInput.inWaiting());
             resp = str(rec_buff.decode());
+            # example response should be: V1:5.41|analogVal:355,V2:5.63|analogVal:369,V2:5.52|analogVal:362,V2:5.12|analogVal:336
+            varr = str.split(',');
+            v1 = varr[0].split('|')[0].split(':')[1];
+            v2 = varr[1].split('|')[0].split(':')[1];
+            v3 = varr[2].split('|')[0].split(':')[1];
+            v4 = varr[3].split('|')[0].split(':')[1];
+            func.log_voltage(v1, v2, v3, v4);
 
         if len(resp) > 0:
             if "S" in rec_buff.decode():
