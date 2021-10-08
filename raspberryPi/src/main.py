@@ -11,6 +11,7 @@ from threading import Thread;
 import func;
 
 doLoop = True;
+mydelay = 500;
 
 serInput = serial.Serial('/dev/serial1',9600,timeout=0.1);
 serInput.flushInput();
@@ -76,8 +77,8 @@ def main_loop():
     while doLoop:
         try:
             #func.log('main.py', 'myloop', 'looping...');s
-            if (time.time() - time_updates > 5):
-                check_sim_notification();
+            if (time.time() - time_updates > mydelay):
+                check_for_notification();
         except:
             func.log('main.py', 'main_loop', 'Exception: ' + str(sys.exc_info()));
 
