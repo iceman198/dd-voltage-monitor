@@ -33,3 +33,22 @@ def update_file_if_needed(filepath, oldfilename):
         now = datetime.datetime.now();
         new_file_name = oldfilename + str(now.strftime('%Y-%m-%d_%H%M%S'));
         os.rename(filepath + oldfilename, filepath + new_file_name);
+
+def lastNlines():
+    n = 200;
+    myfilename = logging_path + voltage_log_name;
+    assert n >= 0
+    pos = n + 1
+    lines = []
+
+    with open(myfilename) as f:
+        while len(lines) <= n:
+            try:
+                f.seek(-pos, 2)
+            except IOError:
+                f.seek(0)
+                break
+            finally:
+                lines = list(f)
+            pos *= 2
+    return lines[-n:]

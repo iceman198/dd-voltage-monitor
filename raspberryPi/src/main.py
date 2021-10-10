@@ -83,6 +83,15 @@ def flask_getvoltage():
         }
     return jsonify(resp_obj);
 
+@app.route('/gethistory/')
+def flask_gethistory():
+    histArr = func.gethistory();
+    resp_obj = {
+        'status': "SUCCESS",
+        'histroy': histArr
+        }
+    return jsonify(resp_obj);
+
 @app.route('/service/jsontest/')
 def flask_jsontest():
     mybody = "This is my json test";
