@@ -42,7 +42,7 @@ def check_for_notification():
 
             a2 = (float(varr[1].split('|')[1].split(':')[1]) / 4.5) / 10 ;
 
-            CURRENT_VOLTAGE = 'V1 = ' + v1 + ' || V2 = ' + v2 + ' || A1 = ' + str(a1) + ' || A2 = ' + str(a2);
+            CURRENT_VOLTAGE = 'V1 = ' + v1 + ' || V2 = ' + v2 + ' || A1 = ' + str(round(a1, 2)) + ' || A2 = ' + str(round(a2, 2));
             func.log_voltage(v1, v2, a1, a2);
             if "S" in resp:
                 vardummy = "";
