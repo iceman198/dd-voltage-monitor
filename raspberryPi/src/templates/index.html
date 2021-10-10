@@ -71,7 +71,7 @@
 
         }
 
-        async function getStats() {
+        async function getLatestVoltage() {
             const response = await makeWebCall(`http://${myhost}/getvoltage/`);
             console.log(`getStats() ~ response: ${JSON.stringify(response)}`);
             if (response != null && response.status != null && response.status == "SUCCESS") {
@@ -82,7 +82,7 @@
             }
         }
 
-        setInterval(getStats, 2000);
+        setInterval(getLatestVoltage, 2000);
 
     </script>
 </head>
@@ -101,6 +101,7 @@
         <div id="chart1" style="margin:10px;width:800px;height:500px;" ></div>
         <script type="text/javascript">
             $(document).ready(function(){
+                const response = await makeWebCall(`http://${myhost}/gethistory/`);
                 let line1=[['2021-10-10 3:05PM',13.2], ['2021-10-10 3:06PM',13.1], ['2021-10-10 3:07PM',13.2], ['2021-10-10 3:08PM',13.3], ['2021-10-10 3:09PM',13.2]];
                 let line2=[['2021-10-10 3:05PM',12.9], ['2021-10-10 3:06PM',13.0], ['2021-10-10 3:07PM',12.9], ['2021-10-10 3:08PM',12.9], ['2021-10-10 3:09PM',12.9]];
                 let plot1 = $.jqplot('chart1', [line1, line2], {
