@@ -71,8 +71,18 @@
 
         async function setupChart() {
             const response = await makeWebCall(`http://${myhost}/gethistory/`);
-            let line1=[['2021-10-10 3:05PM',13.2], ['2021-10-10 3:06PM',13.1], ['2021-10-10 3:07PM',13.2], ['2021-10-10 3:08PM',13.3], ['2021-10-10 3:09PM',13.2]];
-            let line2=[['2021-10-10 3:05PM',12.9], ['2021-10-10 3:06PM',13.0], ['2021-10-10 3:07PM',12.9], ['2021-10-10 3:08PM',12.9], ['2021-10-10 3:09PM',12.9]];
+            const historyArr = response.history; // 2021-10-10 22:53:07,13.70,14.85,15.59,12.30\n
+            let line1 = [];
+            let line2 = [];
+            for ( let i = 0; i < historyArr.length; i++) {
+                let e = historyArr[i];
+                eArr = e.split(',');
+                line1.push([e[0],e[1]]);
+                line2.push(e[0],e[2]);
+            }
+
+            //let line1=[['2021-10-10 3:05PM',13.2], ['2021-10-10 3:06PM',13.1], ['2021-10-10 3:07PM',13.2], ['2021-10-10 3:08PM',13.3], ['2021-10-10 3:09PM',13.2]];
+            //let line2=[['2021-10-10 3:05PM',12.9], ['2021-10-10 3:06PM',13.0], ['2021-10-10 3:07PM',12.9], ['2021-10-10 3:08PM',12.9], ['2021-10-10 3:09PM',12.9]];
             let plot1 = $.jqplot('chart1', [line1, line2], {
                 title:'Default Date Axis',
                 axes:{
