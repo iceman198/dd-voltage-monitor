@@ -85,7 +85,7 @@ def flask_getvoltage():
 
 @app.route('/gethistory/')
 def flask_gethistory():
-    histArr = func.gethistory();
+    histArr = func.get_history();
     resp_obj = {
         'status': "SUCCESS",
         'histroy': histArr

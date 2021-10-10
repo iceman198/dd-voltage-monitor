@@ -34,7 +34,7 @@ def update_file_if_needed(filepath, oldfilename):
         new_file_name = oldfilename + str(now.strftime('%Y-%m-%d_%H%M%S'));
         os.rename(filepath + oldfilename, filepath + new_file_name);
 
-def lastNlines():
+def get_history():
     n = 200;
     myfilename = logging_path + voltage_log_name;
     assert n >= 0
