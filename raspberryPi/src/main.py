@@ -37,8 +37,8 @@ def check_for_notification():
             varr = resp.split(',');
             v1 = varr[0].split('|')[0].split(':')[1];
             v2 = varr[1].split('|')[0].split(':')[1];
-            a1 = varr[0].split('|')[1].split(':')[1];
-            a2 = varr[1].split('|')[1].split(':')[1];
+            a1 = (varr[0].split('|')[1].split(':')[1] / 4.5) / 10;
+            a2 = (varr[1].split('|')[1].split(':')[1] / 4.5) / 10;
             CURRENT_VOLTAGE = 'V1 = ' + v1 + ' || V2 = ' + v2 + ' || A1 = ' + a1 + ' || A2 = ' + a2;
             func.log_voltage(v1, v2, a1, a2);
             if "S" in resp:
