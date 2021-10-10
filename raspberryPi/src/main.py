@@ -18,9 +18,10 @@ serInput.flushInput();
 
 app = Flask(__name__);
 time_updates = time.time();
-
+CURRENT_VOLTAGE = "";
 
 def check_for_notification():
+    global CURRENT_VOLTAGE;
     #func.log('main.py', 'check_for_notification', 'start');
     rec_buff = '';
     resp = "";
@@ -38,14 +39,15 @@ def check_for_notification():
             v2 = varr[1].split('|')[0].split(':')[1];
             v3 = varr[2].split('|')[0].split(':')[1];
             v4 = varr[3].split('|')[0].split(':')[1];
+            CURRENT_VOLTAGE = resp;
             func.log_voltage(v1, v2, v3, v4);
-            if "S" in rec_buff.decode():
+            if "S" in resp:
                 vardummy = "";
-            elif "H" in rec_buff.decode():
+            elif "H" in resp:
                 vardummy = "";
             else:
                 vardummy = "";
-            func.log('main.py', 'check_for_notification', 'rec_buff: ' + rec_buff.decode());
+            func.log('main.py', 'check_for_notification', 'resp: ' + resp);
     except:
         func.log('main.py', 'check_for_notification', 'Exception (' + str(sys.exc_info()) + ') has been caught.');
 
@@ -69,6 +71,15 @@ def flask_shutdown():
     resp_obj = {
         'status': "SUCCESS",
         'body': mybody
+        }
+    return jsonify(resp_obj);
+
+@app.route('/getvoltage/')
+def flask_getvoltage():
+    global CURRENT_VOLTAGE;
+    resp_obj = {
+        'status': "SUCCESS",
+        'voltage': CURRENT_VOLTAGE
         }
     return jsonify(resp_obj);
 

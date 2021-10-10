@@ -68,7 +68,7 @@
         }
 
         async function getStats() {
-            const response = await makeWebCall(`http://${myhost}/getStats/`);
+            const response = await makeWebCall(`http://${myhost}/getvoltage/`);
             console.log(`getStats() ~ response: ${JSON.stringify(response)}`);
             if (response != null && response.status != null && response.status == "SUCCESS") {
                 if (response.voltage != null) { document.getElementById("voltage").innerHTML = response.voltage; }
@@ -78,7 +78,7 @@
             }
         }
 
-        //setInterval(getStats, 2000);
+        setInterval(getStats, 2000);
 
     </script>
 </head>
