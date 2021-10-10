@@ -34,27 +34,29 @@ def check_for_notification():
 
         if len(resp) > 0:
             # example response should be: V1:5.41|analogVal:355,V2:5.63|analogVal:369,V2:5.52|analogVal:362,V2:5.12|analogVal:336
-            varr = resp.split(',');
-            v1 = varr[0].split('|')[0].split(':')[1];
-            a1 = varr[0].split('|')[1].split(':')[1];
-            v2 = varr[1].split('|')[0].split(':')[1];
-            a2 = varr[1].split('|')[1].split(':')[1];
-            v3 = varr[2].split('|')[0].split(':')[1];
-            a3 = varr[2].split('|')[1].split(':')[1];
-            v4 = varr[3].split('|')[0].split(':')[1];
-            a4 = varr[3].split('|')[1].split(':')[1];
-
-            #a2 = (float(varr[1].split('|')[1].split(':')[1]) / 4.5) / 10 ;
-
-            CURRENT_VOLTAGE = 'V1 = ' + str(v1) + ' || A1 = ' + str(a1) + ' || V2 = ' + str(v2) + ' || A2 = ' + str(a2) + ' || V3 = ' + str(v3) + ' || A3 = ' + str(a3) + ' || V4 = ' + str(v4) + ' || A4 = ' + str(a4);
-            func.log_voltage(v1, a1, v2, a2, v3, a3, v4, a4);
-            if "S" in resp:
-                vardummy = "";
-            elif "H" in resp:
-                vardummy = "";
-            else:
-                vardummy = "";
             func.log('main.py', 'check_for_notification', 'resp: ' + resp);
+            
+            varr = resp.split(',');
+            if (len(varr) > 1):
+                v1 = varr[0].split('|')[0].split(':')[1];
+                a1 = varr[0].split('|')[1].split(':')[1];
+                v2 = varr[1].split('|')[0].split(':')[1];
+                a2 = varr[1].split('|')[1].split(':')[1];
+                v3 = varr[2].split('|')[0].split(':')[1];
+                a3 = varr[2].split('|')[1].split(':')[1];
+                v4 = varr[3].split('|')[0].split(':')[1];
+                a4 = varr[3].split('|')[1].split(':')[1];
+
+                #a2 = (float(varr[1].split('|')[1].split(':')[1]) / 4.5) / 10 ;
+
+                CURRENT_VOLTAGE = 'V1 = ' + str(v1) + ' || A1 = ' + str(a1) + ' || V2 = ' + str(v2) + ' || A2 = ' + str(a2) + ' || V3 = ' + str(v3) + ' || A3 = ' + str(a3) + ' || V4 = ' + str(v4) + ' || A4 = ' + str(a4);
+                func.log_voltage(v1, a1, v2, a2, v3, a3, v4, a4);
+                if "S" in resp:
+                    vardummy = "";
+                elif "H" in resp:
+                    vardummy = "";
+                else:
+                    vardummy = "";
     except:
         func.log('main.py', 'check_for_notification', 'Exception (' + str(sys.exc_info()) + ') has been caught.');
 

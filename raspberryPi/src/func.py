@@ -37,18 +37,21 @@ def update_file_if_needed(filepath, oldfilename):
 def get_history():
     n = 2000;
     myfilename = logging_path + voltage_log_name;
-    assert n >= 0
-    pos = n + 1
-    lines = []
+    assert n >= 0;
+    pos = n + 1;
+    lines = [];
 
     with open(myfilename) as f:
-        while len(lines) <= n:
-            try:
-                f.seek(-pos, 2)
-            except IOError:
-                f.seek(0)
-                break
-            finally:
-                lines = list(f)
-            pos *= 2
-    return lines[-n:]
+        if len(lines) > n:
+            while len(lines) <= n:
+                try:
+                    f.seek(-pos, 2)
+                except IOError:
+                    f.seek(0)
+                    break
+                finally:
+                    lines = list(f)
+                pos *= 2
+            return lines[-n:]
+        else: 
+            return lines;
