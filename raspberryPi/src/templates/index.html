@@ -67,13 +67,32 @@
                     document.getElementById("dialerText").innerHTML = currentNumbers;
                 }
             }
+        }
 
-
+        async function setupChart() {
+            const response = await makeWebCall(`http://${myhost}/gethistory/`);
+            let line1=[['2021-10-10 3:05PM',13.2], ['2021-10-10 3:06PM',13.1], ['2021-10-10 3:07PM',13.2], ['2021-10-10 3:08PM',13.3], ['2021-10-10 3:09PM',13.2]];
+            let line2=[['2021-10-10 3:05PM',12.9], ['2021-10-10 3:06PM',13.0], ['2021-10-10 3:07PM',12.9], ['2021-10-10 3:08PM',12.9], ['2021-10-10 3:09PM',12.9]];
+            let plot1 = $.jqplot('chart1', [line1, line2], {
+                title:'Default Date Axis',
+                axes:{
+                    xaxis:{
+                        renderer:$.jqplot.DateAxisRenderer,
+                        rendererOptions:{ tickRenderer:$.jqplot.CanvasAxisTickRenderer },                
+                        tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:-40, formatString:'%H:%M' }            
+                    },
+                    yaxis:{
+                        rendererOptions:{ tickRenderer:$.jqplot.CanvasAxisTickRenderer },                    
+                        tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:30 }            
+                    }        
+                },
+                series:[{lineWidth:4, markerOptions:{style:'square'}}]
+            });
         }
 
         async function getLatestVoltage() {
             const response = await makeWebCall(`http://${myhost}/getvoltage/`);
-            console.log(`getStats() ~ response: ${JSON.stringify(response)}`);
+            //console.log(`getStats() ~ response: ${JSON.stringify(response)}`);
             if (response != null && response.status != null && response.status == "SUCCESS") {
                 if (response.voltage != null) { document.getElementById("voltage").innerHTML = response.voltage; }
                 if (response.signal != null) { document.getElementById("signal").innerHTML = response.signal; }
@@ -86,7 +105,7 @@
 
     </script>
 </head>
-<body>
+<body onload="setupChart">
     <div class="wrap">
         <header>
             <div id="callstatus"></div>
@@ -97,30 +116,7 @@
             </div>
             <div id="dialerText"></div>
         </header>
-
         <div id="chart1" style="margin:10px;width:800px;height:500px;" ></div>
-        <script type="text/javascript">
-            $(document).ready(async function(){
-                const response = await makeWebCall(`http://${myhost}/gethistory/`);
-                let line1=[['2021-10-10 3:05PM',13.2], ['2021-10-10 3:06PM',13.1], ['2021-10-10 3:07PM',13.2], ['2021-10-10 3:08PM',13.3], ['2021-10-10 3:09PM',13.2]];
-                let line2=[['2021-10-10 3:05PM',12.9], ['2021-10-10 3:06PM',13.0], ['2021-10-10 3:07PM',12.9], ['2021-10-10 3:08PM',12.9], ['2021-10-10 3:09PM',12.9]];
-                let plot1 = $.jqplot('chart1', [line1, line2], {
-                    title:'Default Date Axis',
-                    axes:{
-                        xaxis:{
-                            renderer:$.jqplot.DateAxisRenderer,
-                            rendererOptions:{ tickRenderer:$.jqplot.CanvasAxisTickRenderer },                
-                            tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:-40, formatString:'%H:%M' }            
-                        },
-                        yaxis:{
-                            rendererOptions:{ tickRenderer:$.jqplot.CanvasAxisTickRenderer },                    
-                            tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:30 }            
-					    }        
-                    },
-                    series:[{lineWidth:4, markerOptions:{style:'square'}}]
-                });
-            });
-        </script>
         <div class="content">
         </div>
     </div>
