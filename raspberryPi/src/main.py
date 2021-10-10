@@ -38,7 +38,7 @@ def check_for_notification():
             v1 = varr[0].split('|')[0].split(':')[1];
             v2 = varr[1].split('|')[0].split(':')[1];
 
-            a1 = (varr[0].split('|')[1].split(':')[1] / 4.5) / 10 ;
+            a1 = (float(varr[0].split('|')[1].split(':')[1]) / 4.5) / 10 ;
 
             a2 = varr[1].split('|')[1].split(':')[1];
 
