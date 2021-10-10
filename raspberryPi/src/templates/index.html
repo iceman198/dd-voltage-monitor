@@ -106,7 +106,8 @@
                     title:'Default Date Axis',
                     axes:{
                         xaxis:{
-                            renderer:$.jqplot.DateAxisRenderer
+                            renderer:$.jqplot.DateAxisRenderer,
+                            tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:-40, formatString:'%b&nbsp;%#d' }            
                         }
                     },
                     series:[{lineWidth:4, markerOptions:{style:'square'}}]
