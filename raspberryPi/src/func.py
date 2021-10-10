@@ -35,7 +35,7 @@ def update_file_if_needed(filepath, oldfilename):
         os.rename(filepath + oldfilename, filepath + new_file_name);
 
 def get_history():
-    n = 20;
+    n = 2000;
     myfilename = logging_path + voltage_log_name;
     assert n >= 0
     pos = n + 1
