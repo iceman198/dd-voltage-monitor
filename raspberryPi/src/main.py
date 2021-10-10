@@ -88,7 +88,7 @@ def flask_gethistory():
     histArr = func.get_history();
     resp_obj = {
         'status': "SUCCESS",
-        'histroy': histArr
+        'history': histArr
         }
     return jsonify(resp_obj);
 
