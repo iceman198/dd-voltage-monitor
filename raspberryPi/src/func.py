@@ -102,13 +102,13 @@ def get_history():
             i = i + 1;
             if (i > lineskips):
                 line_avg_a1 = line_avg_a1 / i;
-                line_avg_a2 = line_avg_a2 / i; line_avg_a2 = 0.0;
-                line_avg_a3 = line_avg_a3 / i; line_avg_a3 = 0.0;
-                line_avg_a4 = line_avg_a4 / i; line_avg_a4 = 0.0;
-                line_avg_v1 = line_avg_v1 / i; line_avg_v1 = 0.0;
-                line_avg_v2 = line_avg_v2 / i; line_avg_v2 = 0.0;
-                line_avg_v3 = line_avg_v3 / i; line_avg_v3 = 0.0;
-                line_avg_v4 = line_avg_v4 / i; line_avg_v4 = 0.0;
+                line_avg_a2 = line_avg_a2 / i;
+                line_avg_a3 = line_avg_a3 / i;
+                line_avg_a4 = line_avg_a4 / i;
+                line_avg_v1 = line_avg_v1 / i;
+                line_avg_v2 = line_avg_v2 / i;
+                line_avg_v3 = line_avg_v3 / i;
+                line_avg_v4 = line_avg_v4 / i;
                 i = 0;
                 returnlines.append({
                     'timestamp': lineArr[0],
