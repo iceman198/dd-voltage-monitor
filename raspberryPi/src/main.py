@@ -32,7 +32,7 @@ def check_for_notification():
             rec_buff = serInput.read(serInput.inWaiting());
             resp = str(rec_buff.decode());
 
-        if len(resp) > 0:
+        if (len(resp) > 0) & ('\n' not in resp):
             # example response should be: V1:5.41|analogVal:355,V2:5.63|analogVal:369,V2:5.52|analogVal:362,V2:5.12|analogVal:336
             func.log('main.py', 'check_for_notification', 'resp: ' + resp);
             
