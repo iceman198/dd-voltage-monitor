@@ -68,6 +68,7 @@ def get_history():
 
         if (len(lineArr) < 6) : 
             n = n - 1;
+            print('skipping on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
             continue;
 
         #print('working on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
