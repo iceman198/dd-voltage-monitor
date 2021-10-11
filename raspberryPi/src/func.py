@@ -66,7 +66,7 @@ def get_history():
         line = lines[len(lines) - n];
         lineArr = line.split(',');
 
-        if (len(lineArr) < 7) : 
+        if (len(lineArr) < 6) : 
             n = n - 1;
             continue;
 
