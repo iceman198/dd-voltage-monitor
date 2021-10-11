@@ -66,36 +66,36 @@ def get_history():
             line = lines[len(lines) - n];
             lineArr = line.split(',');
 
-            if lineArr[1] > line_max_v1: line_max_v1 = lineArr[1];
-            if lineArr[1] < line_min_v1: line_min_v1 = lineArr[1];
+            if float(lineArr[1]) > line_max_v1: line_max_v1 = lineArr[1];
+            if float(lineArr[1]) < line_min_v1: line_min_v1 = lineArr[1];
             line_avg_v1 = line_avg_v1 + lineArr[1];
 
-            if lineArr[2] > line_max_a1: line_max_a1 = lineArr[2];
-            if lineArr[2] < line_min_a1: line_min_a1 = lineArr[2];
+            if float(lineArr[2]) > line_max_a1: line_max_a1 = lineArr[2];
+            if float(lineArr[2]) < line_min_a1: line_min_a1 = lineArr[2];
             line_avg_a1 = line_avg_a1 + lineArr[2];
 
-            if lineArr[3] > line_max_v2: line_max_v2 = lineArr[3];
-            if lineArr[3] < line_min_v2: line_min_v2 = lineArr[3];
+            if float(lineArr[3]) > line_max_v2: line_max_v2 = lineArr[3];
+            if float(lineArr[3]) < line_min_v2: line_min_v2 = lineArr[3];
             line_avg_v2 = line_avg_v2 + lineArr[3];
 
-            if lineArr[4] > line_max_a2: line_max_a2 = lineArr[4];
-            if lineArr[4] < line_min_a2: line_min_a2 = lineArr[4];
+            if float(lineArr[4]) > line_max_a2: line_max_a2 = lineArr[4];
+            if float(lineArr[4]) < line_min_a2: line_min_a2 = lineArr[4];
             line_avg_a2 = line_avg_a2 + lineArr[4];
 
-            if lineArr[5] > line_max_v3: line_max_v3 = lineArr[5];
-            if lineArr[5] < line_min_v3: line_min_v3 = lineArr[5];
+            if float(lineArr[5]) > line_max_v3: line_max_v3 = lineArr[5];
+            if float(lineArr[5]) < line_min_v3: line_min_v3 = lineArr[5];
             line_avg_v3 = line_avg_v3 + lineArr[5];
 
-            if lineArr[6] > line_max_a3: line_max_a3 = lineArr[6];
-            if lineArr[6] < line_min_a3: line_min_a3 = lineArr[6];
+            if float(lineArr[6]) > line_max_a3: line_max_a3 = lineArr[6];
+            if float(lineArr[6]) < line_min_a3: line_min_a3 = lineArr[6];
             line_avg_a3 = line_avg_a2 + lineArr[6];
 
-            if lineArr[7] > line_max_v4: line_max_v4 = lineArr[7];
-            if lineArr[7] < line_min_v4: line_min_v4 = lineArr[7];
+            if float(lineArr[7]) > line_max_v4: line_max_v4 = lineArr[7];
+            if float(lineArr[7]) < line_min_v4: line_min_v4 = lineArr[7];
             line_avg_v4 = line_avg_v4 + lineArr[7];
 
-            if lineArr[8] > line_max_a4: line_max_a4 = lineArr[8];
-            if lineArr[8] < line_min_a4: line_min_a4 = lineArr[8];
+            if float(lineArr[8]) > line_max_a4: line_max_a4 = lineArr[8];
+            if float(lineArr[8]) < line_min_a4: line_min_a4 = lineArr[8];
             line_avg_a4 = line_avg_a4 + lineArr[8];
             
             i = i + 1;
