@@ -66,7 +66,7 @@ def get_history():
         line = lines[len(lines) - n];
         lineArr = line.split(',');
 
-        print('working on n: ' + str(n));
+        print('working on n: ' + str(n) + ' with line: ' + str(line));
 
         if float(lineArr[1]) > line_max_v1: line_max_v1 = float(lineArr[1]);
         if float(lineArr[1]) < line_min_v1: line_min_v1 = float(lineArr[1]);
