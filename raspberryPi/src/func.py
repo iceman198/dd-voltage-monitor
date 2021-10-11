@@ -73,6 +73,7 @@ def get_history():
             if float(lineArr[2]) > line_max_a1: line_max_a1 = float(lineArr[2]);
             if float(lineArr[2]) < line_min_a1: line_min_a1 = float(lineArr[2]);
             line_avg_a1 = line_avg_a1 + float(lineArr[2]);
+            print('line_avg_a1: ' + str(line_avg_a1) + ' ## lineArr2: ' + str(lineArr[2]));
 
             if float(lineArr[3]) > line_max_v2: line_max_v2 = float(lineArr[3]);
             if float(lineArr[3]) < line_min_v2: line_min_v2 = float(lineArr[3]);
