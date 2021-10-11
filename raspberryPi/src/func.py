@@ -50,7 +50,7 @@ def verify_file(filewithpath):
 def get_history():
     #print('get_history start');
     n = 8000;
-    lineskips = 120;
+    lineskips = 300;
     myfilename = logging_path + voltage_log_name;
     newlines = [];
     returnlines = [];
