@@ -74,18 +74,21 @@
             const historyArr = response.history; // 2021-10-10 22:53:07,13.70,14.85,15.59,12.30\n
             let line1 = [];
             let line2 = [];
+            let line3 = [];
             for ( let i = 0; i < historyArr.length; i++) {
                 let e = historyArr[i];
                 let eArr = e.split(',');
-                if (eArr[1] < 20 && eArr[2] < 20) {
+                if (eArr[1] < 20 && eArr[3] < 20) {
                     line1.push([eArr[0],parseFloat(eArr[1])]);
-                    line2.push([eArr[0],parseFloat(eArr[2])]);                    
+                    line2.push([eArr[0],parseFloat(eArr[3])]);
+                    let mydiff = parseInt(eArr[2]) - parseInt(eArr[4]);
+                    line3.push([eArr[0],mydiff]);
                 }
             }
 
             //let line1=[['2021-10-10 3:05PM',13.2], ['2021-10-10 3:06PM',13.1], ['2021-10-10 3:07PM',13.2], ['2021-10-10 3:08PM',13.3], ['2021-10-10 3:09PM',13.2]];
             //let line2=[['2021-10-10 3:05PM',12.9], ['2021-10-10 3:06PM',13.0], ['2021-10-10 3:07PM',12.9], ['2021-10-10 3:08PM',12.9], ['2021-10-10 3:09PM',12.9]];
-            let plot1 = $.jqplot('chart1', [line1, line2], {
+            let plot1 = $.jqplot('chart1', [line1, line2, line3], {
                 title:'Voltage History',
                 axes:{
                     xaxis:{

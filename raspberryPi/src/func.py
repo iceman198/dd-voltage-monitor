@@ -35,7 +35,7 @@ def update_file_if_needed(filepath, oldfilename):
         os.rename(filepath + oldfilename, filepath + new_file_name);
 
 def get_history():
-    print('get_history start');
+    #print('get_history start');
     n = 2000;
     myfilename = logging_path + voltage_log_name;
     newlines = [];
@@ -46,8 +46,8 @@ def get_history():
         while(n > 0):
             newlines.append(lines[len(lines) - n]);
             n = n - 1;
-        print('get_history if return ' + str(newlines));
+        #print('get_history if return ' + str(newlines));
         return newlines;
     else:
-        print('get_history else return ' + str(lines));
+        #print('get_history else return ' + str(lines));
         return lines;
