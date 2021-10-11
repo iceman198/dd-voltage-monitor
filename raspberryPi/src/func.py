@@ -36,7 +36,7 @@ def update_file_if_needed(filepath, oldfilename):
 
 def get_history():
     #print('get_history start');
-    n = 3000;
+    n = 6000;
     myfilename = logging_path + voltage_log_name;
     newlines = [];
     file = open(myfilename,'r');
