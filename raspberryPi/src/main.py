@@ -38,7 +38,7 @@ def check_for_notification():
             if ('\n' in resp):
                 resp = resp.replace('\r', '');
                 resp = resp.split('\n')[0];
-                
+
             varr = resp.split(',');
             if (len(varr) > 1):# & ('\n' not in varr):
                 #v1 = varr[0].split('|')[0].split(':')[1];
@@ -56,7 +56,16 @@ def check_for_notification():
 
                 #a2 = (float(varr[1].split('|')[1].split(':')[1]) / 4.5) / 10 ;
 
-                CURRENT_VOLTAGE = 'V1 = ' + str(v1) + ' || A1 = ' + str(a1) + ' || V2 = ' + str(v2) + ' || A2 = ' + str(a2) + ' || V3 = ' + str(v3) + ' || A3 = ' + str(a3) + ' || V4 = ' + str(v4) + ' || A4 = ' + str(a4);
+                CURRENT_VOLTAGE = {
+                    'v1': v1,
+                    'a1': a1,
+                    'v2': v2,
+                    'a2': a2,
+                    'v3': v3,
+                    'a3': a3,
+                    'v4': v4,
+                    'a4': a4
+                };
                 func.log_voltage(v1, a1, v2, a2, v3, a3, v4, a4);
                 if "S" in resp:
                     vardummy = "";
