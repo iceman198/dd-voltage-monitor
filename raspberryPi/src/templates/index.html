@@ -16,6 +16,7 @@
     <script type = "text/javascript">
         let myhost = "solar.dbiz:5000";
         let inCall = false;
+        $.jqplot.config.enablePlugins = true;
 
         async function makeWebCall(address, data) {
             return new Promise(async (resolve, reject) => {
@@ -85,10 +86,9 @@
                 }
             }
 
-            $.jqplot.config.enablePlugins = true;
             //let line1=[['2021-10-10 3:05PM',13.2], ['2021-10-10 3:06PM',13.1], ['2021-10-10 3:07PM',13.2], ['2021-10-10 3:08PM',13.3], ['2021-10-10 3:09PM',13.2]];
             //let line2=[['2021-10-10 3:05PM',12.9], ['2021-10-10 3:06PM',13.0], ['2021-10-10 3:07PM',12.9], ['2021-10-10 3:08PM',12.9], ['2021-10-10 3:09PM',12.9]];
-            let plot1 = $.jqplot('chart1', [line3], {
+            let plot1 = $.jqplot('chart1', [line1, line3], {
                 title:'Voltage History',
                 axes:{
                     xaxis:{
