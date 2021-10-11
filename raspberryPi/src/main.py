@@ -34,7 +34,7 @@ def check_for_notification():
 
         if (len(resp) > 0):
             # example response should be: V1:5.41|analogVal:355,V2:5.63|analogVal:369,V2:5.52|analogVal:362,V2:5.12|analogVal:336
-            func.log('main.py', 'check_for_notification', 'resp: ' + resp);
+            #func.log('main.py', 'check_for_notification', 'resp: ' + resp);
             if ('\n' in resp):
                 resp = resp.replace('\r', '');
                 resp = resp.split('\n')[0];
