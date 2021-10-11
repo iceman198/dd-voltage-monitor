@@ -71,7 +71,7 @@ def get_history():
         #    print('skipping on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
         #    continue;
 
-        #print('working on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
+        print('working on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
 
         if float(lineArr[1]) > line_max_v1: line_max_v1 = float(lineArr[1]);
         if float(lineArr[1]) < line_min_v1: line_min_v1 = float(lineArr[1]);
