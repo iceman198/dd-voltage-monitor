@@ -80,7 +80,7 @@
                 if (h.v1.avg < 20 && h.v1.avg < 20) {
                     line1.push([h.timestamp,parseFloat(h.v1.avg)]);
                     line2.push([h.timestamp,parseFloat(h.v2.avg)]);
-                    let mydiff = parseInt(h.a1.avg) - parseInt(h.a2.avg);
+                    let mydiff = parseInt(h.a2.avg) - parseInt(h.a1.avg);
                     line3.push([h.timestamp,mydiff]);
                 }
             }
@@ -89,6 +89,12 @@
             //let line2=[['2021-10-10 3:05PM',12.9], ['2021-10-10 3:06PM',13.0], ['2021-10-10 3:07PM',12.9], ['2021-10-10 3:08PM',12.9], ['2021-10-10 3:09PM',12.9]];
             let plot1 = $.jqplot('chart1', [line1, line2, line3], {
                 title:'Voltage History',
+                cursor: {
+                    show: true,
+                    zoom: true,
+                    looseZoom: true,
+                    showTooltip: false
+                },
                 axes:{
                     xaxis:{
                         renderer:$.jqplot.DateAxisRenderer,
