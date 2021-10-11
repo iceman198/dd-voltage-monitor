@@ -37,7 +37,7 @@ def check_for_notification():
             func.log('main.py', 'check_for_notification', 'resp: ' + resp);
             
             varr = resp.split(',');
-            if (len(varr) > 1) & ('\n' not in resp):
+            if (len(varr) > 1):# & ('\n' not in varr):
                 #v1 = varr[0].split('|')[0].split(':')[1];
                 a1 = varr[0].split('|')[1].split(':')[1];
                 v1 = calculate_voltage(a1);
