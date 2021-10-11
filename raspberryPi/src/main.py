@@ -38,6 +38,7 @@ def check_for_notification():
             if ('\n' in resp):
                 resp = resp.replace('\r', '');
                 resp = resp.split('\n')[0];
+                
             varr = resp.split(',');
             if (len(varr) > 1):# & ('\n' not in varr):
                 #v1 = varr[0].split('|')[0].split(':')[1];
