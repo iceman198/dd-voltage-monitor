@@ -73,7 +73,7 @@ def get_history():
             if float(lineArr[2]) > line_max_a1: line_max_a1 = float(lineArr[2]);
             if float(lineArr[2]) < line_min_a1: line_min_a1 = float(lineArr[2]);
             line_avg_a1 = line_avg_a1 + float(lineArr[2]);
-            print('line_avg_a1: ' + str(line_avg_a1) + ' ## lineArr2: ' + str(lineArr[2]));
+            #print('line_avg_a1: ' + str(line_avg_a1) + ' ## lineArr2: ' + str(lineArr[2]));
 
             if float(lineArr[3]) > line_max_v2: line_max_v2 = float(lineArr[3]);
             if float(lineArr[3]) < line_min_v2: line_min_v2 = float(lineArr[3]);
@@ -101,7 +101,7 @@ def get_history():
             
             i = i + 1;
             if (i > lineskips):
-                line_avg_a1 = line_avg_a1 / i; line_avg_a1 = 0.0;
+                line_avg_a1 = line_avg_a1 / i;
                 line_avg_a2 = line_avg_a2 / i; line_avg_a2 = 0.0;
                 line_avg_a3 = line_avg_a3 / i; line_avg_a3 = 0.0;
                 line_avg_a4 = line_avg_a4 / i; line_avg_a4 = 0.0;
@@ -153,6 +153,9 @@ def get_history():
                         'avg': line_avg_v4
                         }
                 });
+                line_avg_a1, line_avg_a2, line_avg_a3, line_avg_a4, line_avg_v1, line_avg_v2, line_avg_v3, line_avg_v4 = [0]*8;
+                line_max_a1, line_max_a2, line_max_a3, line_max_a4, line_max_v1, line_max_v2, line_max_v3, line_max_v4 = [0]*8;
+                line_min_a1, line_min_a2, line_min_a3, line_min_a4, line_min_v1, line_min_v2, line_min_v3, line_min_v4 = [1000]*8;
 
             newlines.append(lines[len(lines) - n]);
             n = n - 1;
