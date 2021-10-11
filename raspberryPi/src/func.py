@@ -45,7 +45,7 @@ def get_history():
     if (len(lines) > n):
         while(n > 0):
             newlines.append(lines[len(lines) - n]);
-            n = n - 1;
+            n = n - 60;
         #print('get_history if return ' + str(newlines));
         return newlines;
     else:
