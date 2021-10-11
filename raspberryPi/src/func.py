@@ -59,7 +59,7 @@ def get_history():
 
     if (len(lines) > n):
         i = 0;
-        line_avg_a1, line_avg_a2, line_avg_a3, line_avg_a4, line_avg_v1, line_avg_v2, line_avg_v3, line_avg_v4 = 0;
+        line_avg_a1, line_avg_a2, line_avg_a3, line_avg_a4, line_avg_v1, line_avg_v2, line_avg_v3, line_avg_v4 = [0]*8;
         line_max_a1, line_max_a2, line_max_a3, line_max_a4, line_max_v1, line_max_v2, line_max_v3, line_max_v4 = 0;
         line_min_a1, line_min_a2, line_min_a3, line_min_a4, line_min_v1, line_min_v2, line_min_v3, line_min_v4 = 0;
         while(n > 0):
