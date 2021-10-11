@@ -71,7 +71,7 @@ def get_history():
         #    print('skipping on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
         #    continue;
 
-        print('working on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
+        #print('working on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
 
         if float(lineArr[1]) > line_max_v1: line_max_v1 = float(lineArr[1]);
         if float(lineArr[1]) < line_min_v1: line_min_v1 = float(lineArr[1]);
@@ -107,7 +107,7 @@ def get_history():
         line_avg_a4 = line_avg_a4 + float(lineArr[8]);
         
         i = i + 1;
-        if (i > lineskips | n <= 1):
+        if (i > lineskips or n <= 1):
             line_avg_a1 = line_avg_a1 / i;
             line_avg_a2 = line_avg_a2 / i;
             line_avg_a3 = line_avg_a3 / i;
