@@ -46,7 +46,7 @@ def get_history():
         while(n > 0):
             newlines.append(lines[len(lines) - n]);
             n = n - 1;
-        print('get_history if return');
+        print('get_history if return ' + str(newlines));
         return newlines;
     else:
         print('get_history else return ' + str(lines));
