@@ -85,9 +85,10 @@
                 }
             }
 
+            $.jqplot.config.enablePlugins = true;
             //let line1=[['2021-10-10 3:05PM',13.2], ['2021-10-10 3:06PM',13.1], ['2021-10-10 3:07PM',13.2], ['2021-10-10 3:08PM',13.3], ['2021-10-10 3:09PM',13.2]];
             //let line2=[['2021-10-10 3:05PM',12.9], ['2021-10-10 3:06PM',13.0], ['2021-10-10 3:07PM',12.9], ['2021-10-10 3:08PM',12.9], ['2021-10-10 3:09PM',12.9]];
-            let plot1 = $.jqplot('chart1', [line1, line2, line3], {
+            let plot1 = $.jqplot('chart1', [line1, line3], {
                 title:'Voltage History',
                 cursor: {
                     show: true,
@@ -116,10 +117,16 @@
                     }        
                 },
                 highlighter: {
-                    show: true, 
-                    showLabel: true, 
-                    tooltipAxes: 'y',
-                    sizeAdjust: 7.5 , tooltipLocation : 'ne'
+                    showMarker:false,
+                    tooltipAxes: 'xy',
+                    yvalues: 4,
+                    formatString:'<table class="jqplot-highlighter"> \
+                    <tr><td>date:</td><td>%s</td></tr> \
+                    <tr><td>open:</td><td>%s</td></tr> \
+                    <tr><td>hi:</td><td>%s</td></tr> \
+                    <tr><td>low:</td><td>%s</td></tr> \
+                    <tr><td>close:</td><td>%s</td></tr> \
+                    </table>'
                 }
             });
         }
