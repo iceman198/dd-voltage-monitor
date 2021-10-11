@@ -42,16 +42,13 @@ def get_history():
     lines = [];
 
     with open(myfilename) as f:
-        if len(lines) > n:
-            while len(lines) <= n:
-                try:
-                    f.seek(-pos, 2)
-                except IOError:
-                    f.seek(0)
-                    break
-                finally:
-                    lines = list(f)
-                pos *= 2
-            return lines[-n:]
-        else: 
-            return lines;
+        while len(lines) <= n:
+            try:
+                f.seek(-pos, 2)
+            except IOError:
+                f.seek(0)
+                break
+            finally:
+                lines = list(f)
+            pos *= 2
+        return lines[-n:]
