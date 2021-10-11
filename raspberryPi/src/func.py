@@ -66,10 +66,10 @@ def get_history():
         line = lines[len(lines) - n];
         lineArr = line.split(',');
 
-        if (len(lineArr) < 6) : 
-            n = n - 1;
-            print('skipping on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
-            continue;
+        #if (len(lineArr) < 6) : 
+        #    n = n - 1;
+        #    print('skipping on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
+        #    continue;
 
         #print('working on n: ' + str(n) + ' line-len= ' + str(len(lines)) + ' with line: ' + str(line));
 
