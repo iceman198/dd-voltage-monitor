@@ -95,6 +95,15 @@
                     looseZoom: true,
                     showTooltip: false
                 },
+                series:[
+                    {
+                        pointLabels: {
+                            show: true
+                        },
+                        lineWidth:4, 
+                        markerOptions:{style:'square'}
+                    }
+                ],
                 axes:{
                     xaxis:{
                         renderer:$.jqplot.DateAxisRenderer,
@@ -106,7 +115,12 @@
                         tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:30 }            
                     }        
                 },
-                series:[{lineWidth:4, markerOptions:{style:'square'}}]
+                highlighter: {
+                    show: true, 
+                    showLabel: true, 
+                    tooltipAxes: 'y',
+                    sizeAdjust: 7.5 , tooltipLocation : 'ne'
+                }
             });
         }
 
