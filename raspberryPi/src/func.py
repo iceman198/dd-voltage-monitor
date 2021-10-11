@@ -64,7 +64,7 @@ def get_history():
         return newlines;
     elif (len(lines) > lineskips):
         #print('get_history else return ' + str(lines));
-        t = lineskips;
+        t = len(lines);
         while(t > 0):
             newlines.append(lines[len(lines) - t]);
             t = t - lineskips;
