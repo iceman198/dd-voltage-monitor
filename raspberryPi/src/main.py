@@ -38,14 +38,18 @@ def check_for_notification():
             
             varr = resp.split(',');
             if (len(varr) > 1):
-                v1 = varr[0].split('|')[0].split(':')[1];
+                #v1 = varr[0].split('|')[0].split(':')[1];
                 a1 = varr[0].split('|')[1].split(':')[1];
-                v2 = varr[1].split('|')[0].split(':')[1];
+                v1 = calculate_voltage(a1);
+                #v2 = varr[1].split('|')[0].split(':')[1];
                 a2 = varr[1].split('|')[1].split(':')[1];
-                v3 = varr[2].split('|')[0].split(':')[1];
+                v2 = calculate_voltage(a2);
+                #v3 = varr[2].split('|')[0].split(':')[1];
                 a3 = varr[2].split('|')[1].split(':')[1];
-                v4 = varr[3].split('|')[0].split(':')[1];
+                v3 = calculate_voltage(a3);
+                #v4 = varr[3].split('|')[0].split(':')[1];
                 a4 = varr[3].split('|')[1].split(':')[1];
+                v4 = calculate_voltage(a4);
 
                 #a2 = (float(varr[1].split('|')[1].split(':')[1]) / 4.5) / 10 ;
 
@@ -62,6 +66,13 @@ def check_for_notification():
 
     #func.log('main.py', 'check_for_notification', 'end');
     return resp;
+
+def calculate_voltage(value):
+    R1 = 27730.0;
+    R2 = 7463.0;
+    vOUT = (value * 5.0) / 1024.0;
+    vIN = vOUT / (R2/(R1+R2));
+    return vIN;
 
 def shutdown():
     currentLine1 = "Shutting down...";
