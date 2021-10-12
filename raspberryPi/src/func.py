@@ -65,8 +65,10 @@ def backup_voltage_log_if_needed():
         while(i > len(lines)):
             if (i < line_end_count):
                 file_new.write(lines[i]);
+                print('backup_voltage_log_if_needed - wrote to new file');
             else:
                 file_old.write(lines[i]);
+                print('backup_voltage_log_if_needed - wrote to old file');
             i = i + 1;
         
         file_new.close();
