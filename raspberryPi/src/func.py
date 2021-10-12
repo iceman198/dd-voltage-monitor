@@ -10,7 +10,7 @@ voltage_log_active_name = "voltageLogActive.csv";
 lines_to_keep = 16000;
 lines_to_avg = 300;
 
-file_size_max_mb = 3;
+file_size_max_mb = 10;
 
 def print_test():
     print('This is a test');
@@ -28,6 +28,7 @@ def log(myclass, service, text):
 def log_voltage(v1, a1, v2, a2, v3, a3, v4, a4):
     verify_file(logging_path + voltage_log_name);
     verify_file(logging_path + voltage_log_active_name);
+    backup_voltage_log_if_needed();
     update_file_if_needed(logging_path, voltage_log_name);
     f = open(logging_path + voltage_log_active_name, "a");
     now = datetime.datetime.now();
