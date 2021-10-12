@@ -5,8 +5,12 @@ import os;
 logging_path = "/home/pi/share/";
 log_file_name = "voltageMonitor.log";
 voltage_log_name = "voltageLog.csv";
+voltage_log_active_name = "voltageLogActive.csv";
 
-file_size_max_mb = 2;
+lines_to_keep = 8000;
+lines_to_avg = 300;
+
+file_size_max_mb = 5;
 
 def print_test():
     print('This is a test');
@@ -23,6 +27,7 @@ def log(myclass, service, text):
 
 def log_voltage(v1, a1, v2, a2, v3, a3, v4, a4):
     verify_file(logging_path + voltage_log_name);
+    verify_file(logging_path + voltage_log_active_name);
     update_file_if_needed(logging_path, voltage_log_name);
     f = open(logging_path + voltage_log_name, "a");
     now = datetime.datetime.now();
@@ -49,8 +54,7 @@ def verify_file(filewithpath):
 
 def get_history():
     #print('get_history start');
-    n = 8000;
-    lineskips = 300;
+    n = lines_to_keep;
     myfilename = logging_path + voltage_log_name;
     newlines = [];
     returnlines = [];
@@ -107,7 +111,7 @@ def get_history():
         line_avg_a4 = line_avg_a4 + float(lineArr[8]);
         
         i = i + 1;
-        if (i > lineskips or n <= 1):
+        if (i > lines_to_avg or n <= 1):
             line_avg_a1 = line_avg_a1 / i;
             line_avg_a2 = line_avg_a2 / i;
             line_avg_a3 = line_avg_a3 / i;

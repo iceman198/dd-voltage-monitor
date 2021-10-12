@@ -11,7 +11,7 @@ from threading import Thread;
 import func;
 
 doLoop = True;
-mydelay = 1.0;
+mydelay = 2.0;
 
 serInput = serial.Serial('/dev/ttyUSB0',9600,timeout=0.1);
 serInput.flushInput();
