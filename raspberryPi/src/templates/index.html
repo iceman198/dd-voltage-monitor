@@ -9,6 +9,10 @@
     <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='jqplot108r1250/jquery.jqplot.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='jqplot108r1250/plugins/jqplot.highlighter.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jqplot108r1250/plugins/jqplot.cursor.js') }}"></script>
+
     <script type="text/javascript" src="{{ url_for('static', filename='jqplot108r1250/plugins/jqplot.meterGaugeRenderer.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='jqplot108r1250/plugins/jqplot.dateAxisRenderer.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jqplot108r1250/jquery.jqplot.css') }}" />
@@ -93,20 +97,24 @@
                 title:'Voltage History',
                 axes:{
                     xaxis:{
-                        renderer:$.jqplot.DateAxisRenderer, 
-                        rendererOptions:{ tickRenderer:$.jqplot.CanvasAxisTickRenderer },
-                        tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:-40
-                        }
+                    renderer:$.jqplot.DateAxisRenderer,
+                    tickOptions:{
+                        formatString:'%b&nbsp;%#d'
+                    } 
                     },
                     yaxis:{
-                        rendererOptions:{
-                            tickRenderer:$.jqplot.CanvasAxisTickRenderer},
-                            tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:30
-                            }
+                    tickOptions:{
+                        formatString:'$%.2f'
+                        }
                     }
                 },
-                series:[{ lineWidth:4, markerOptions:{ style:'square' } }],
-                cursor:{ zoom:true, looseZoom: true }
+                highlighter: {
+                    show: true,
+                    sizeAdjust: 7.5
+                },
+                cursor: {
+                    show: false
+                }
             });
 
             let plot2 = $.jqplot('chart2', [line3], {
