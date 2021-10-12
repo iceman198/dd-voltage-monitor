@@ -99,14 +99,12 @@
                     xaxis:{
                         renderer:$.jqplot.DateAxisRenderer, 
                         rendererOptions:{ tickRenderer:$.jqplot.CanvasAxisTickRenderer },
-                        tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:-40, formatString:'%b&nbsp;%#d'
-                        }
+                        tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:-40, formatString:'%.2f' }
                     },
                     yaxis:{
                         rendererOptions:{
                             tickRenderer:$.jqplot.CanvasAxisTickRenderer},
-                            tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:30
-                            }
+                            tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:30 }
                     }
                 },
                 series:[{ lineWidth:4, markerOptions:{ style:'square' } }],
