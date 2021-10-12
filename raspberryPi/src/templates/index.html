@@ -86,7 +86,7 @@
                 if (h.v1.avg < 20 && h.v1.avg < 20) {
                     line1.push([h.timestamp,parseFloat(h.v1.avg)]);
                     line2.push([h.timestamp,parseFloat(h.v2.avg)]);
-                    let mydiff = parseInt(h.a2.avg) - parseInt(h.a1.avg);
+                    let mydiff = parseInt(h.a2.max) - parseInt(h.a1.min);
                     line3.push([h.timestamp,mydiff]);
                 }
             }
