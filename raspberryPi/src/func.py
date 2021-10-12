@@ -141,7 +141,7 @@ def get_history():
         line_avg_a4 = line_avg_a4 + float(lineArr[8]);
         
         i = i + 1;
-        if (((i <= n) and (i > (lines_to_avg * 3))) or ((i > n) and (i > lines_to_avg)) or (n <= 1)):
+        if (((i > lines_to_avg * 2) and (n > (len(lines) / 2))) or ((i > lines_to_avg) and (n <= (len(lines) / 2))) or (n <= 1)):
             line_avg_a1 = line_avg_a1 / i;
             line_avg_a2 = line_avg_a2 / i;
             line_avg_a3 = line_avg_a3 / i;
