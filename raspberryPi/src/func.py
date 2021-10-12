@@ -29,7 +29,7 @@ def log_voltage(v1, a1, v2, a2, v3, a3, v4, a4):
     verify_file(logging_path + voltage_log_name);
     verify_file(logging_path + voltage_log_active_name);
     update_file_if_needed(logging_path, voltage_log_name);
-    f = open(logging_path + voltage_log_name, "a");
+    f = open(logging_path + voltage_log_active_name, "a");
     now = datetime.datetime.now();
     mystring = str(now.strftime('%Y-%m-%d %H:%M:%S')) + ',' + str(v1) + ',' + str(a1) + ',' + str(v2) + ',' + str(a2) + ',' + str(v3) + ',' + str(a3) + ',' + str(v4) + ',' + str(a4);
     f.write(mystring+'\n');
