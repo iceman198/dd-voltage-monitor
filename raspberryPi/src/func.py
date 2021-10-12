@@ -49,7 +49,7 @@ def backup_voltage_log_if_needed():
     file_size = os.path.getsize(logging_path + voltage_log_active_name);
     size_in_mb = file_size/1024**2;
     if (size_in_mb > (file_size_max_mb / 2)):
-        print('backup_voltage_log_if_needed - Im going to break the active file up');
+        log('func.py', 'backup_voltage_log_if_needed', 'backup_voltage_log_if_needed - Im going to break the active file up');
         file_old = open(logging_path + voltage_log_active_name,'r');
         lines = file_old.readlines();
         file_old.close();
@@ -59,7 +59,7 @@ def backup_voltage_log_if_needed():
         
         file_new = open(logging_path + voltage_log_name, "a");
         line_end_count = round(len(lines) / 2);
-        print('backup_voltage_log_if_needed - Line 0 to ' + str(line_end_count) + ' will be moved to the non-active file - I have a full length of ' + str(len(lines)));
+        log('func.py', 'backup_voltage_log_if_needed', 'Line 0 to ' + str(line_end_count) + ' will be moved to the non-active file - I have a full length of ' + str(len(lines)));
         
         i = 0;
         while(i < len(lines)):
