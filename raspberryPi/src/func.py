@@ -44,6 +44,11 @@ def update_file_if_needed(filepath, oldfilename):
         os.rename(filepath + oldfilename, filepath + new_file_name);
         verify_file(filepath + oldfilename);
 
+def backup_file_if_needed(filepath, oldfilename):
+    file_size = os.path.getsize(filepath + oldfilename);
+    size_in_mb = file_size/1024**2;
+    
+
 def verify_file(filewithpath):
     try:
         f = open(filewithpath);
