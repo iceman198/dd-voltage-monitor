@@ -135,21 +135,14 @@
             //console.log(`getStats() ~ response: ${JSON.stringify(response)}`);
             if (response != null && response.status != null && response.status == "SUCCESS") {
                 if (response.voltage != null) { 
-                    document.getElementById("voltage").innerHTML = `V1=${response.voltage.v1} || A1=${response.voltage.a1}<br/>V2=${response.voltage.v2} || A2=${response.voltage.a2}`;
-                    
+                    //document.getElementById("voltage").innerHTML = `V1=${response.voltage.v1} || A1=${response.voltage.a1}<br/>V2=${response.voltage.v2} || A2=${response.voltage.a2}`;
                     plot0 = $.jqplot('meterV',[[response.voltage.v1]],{
                         seriesDefaults: {
                             renderer: $.jqplot.MeterGaugeRenderer,
-                            rendererOptions: {
-                                label: 'volts',
-                                min: 9,
-                                max: 16,
-                                intervals:[11,14,16],
-                                intervalColors:['#cc6666', '#66cc66', '#E7E658']
+                            rendererOptions: { label: 'volts', min: 9, max: 16, intervals:[11,14,16], intervalColors:['#cc6666', '#66cc66', '#E7E658']
                             }
                         }
                     });
-
                 }
             }
         }
@@ -167,8 +160,8 @@
         </header>
         <div id="meterV" class="plot jqplot-target" style="width: 250px; height: 170px; position: relative;"></div>
         <!--<div id="chart1" style="margin:10px;width:800px;height:500px;" ></div>-->
-        <div id="chart1" class="jqplot-target" style="width: 600px; height: 400px; position: relative;"></div>
-        <div id="chart2" class="jqplot-target" style="width: 600px; height: 400px; position: relative;"></div>
+        <div id="chart1" class="jqplot-target" style="width: 600px; height: 200px; position: relative;"></div>
+        <div id="chart2" class="jqplot-target" style="width: 600px; height: 200px; position: relative;"></div>
 
         <div class="content">
         </div>
