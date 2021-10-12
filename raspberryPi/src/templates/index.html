@@ -129,11 +129,12 @@
                     document.getElementById("voltage").innerHTML = `V1=${response.voltage.v1} || A1=${response.voltage.a1}<br/>V2=${response.voltage.v2} || A2=${response.voltage.a2}`;
                     
                     plot0 = $.jqplot('meterV',[[response.voltage.v1]],{
-                        title: 'Current Voltage',
                         seriesDefaults: {
                             renderer: $.jqplot.MeterGaugeRenderer,
                             rendererOptions: {
-                                label: 'v'
+                                label: 'volts',
+                                intervals:[11.0,12.0,13.0],
+                                intervalColors:['#66cc66', '#E7E658', '#cc6666']
                             }
                         }
                     });
