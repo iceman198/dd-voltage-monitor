@@ -97,24 +97,20 @@
                 title:'Voltage History',
                 axes:{
                     xaxis:{
-                    renderer:$.jqplot.DateAxisRenderer,
-                    tickOptions:{
-                        formatString:'%b&nbsp;%#d'
-                    } 
+                        renderer:$.jqplot.DateAxisRenderer, 
+                        rendererOptions:{ tickRenderer:$.jqplot.CanvasAxisTickRenderer },
+                        tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:-40
+                        }
                     },
                     yaxis:{
-                    tickOptions:{
-                        formatString:'$%.2f'
-                        }
+                        rendererOptions:{
+                            tickRenderer:$.jqplot.CanvasAxisTickRenderer},
+                            tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:30
+                            }
                     }
                 },
-                highlighter: {
-                    show: true,
-                    sizeAdjust: 7.5
-                },
-                cursor: {
-                    show: false
-                }
+                series:[{ lineWidth:4, markerOptions:{ style:'square' } }],
+                cursor:{ zoom:true, looseZoom: true }
             });
 
             let plot2 = $.jqplot('chart2', [line3], {
