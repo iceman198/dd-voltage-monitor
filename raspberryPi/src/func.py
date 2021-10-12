@@ -54,10 +54,12 @@ def backup_voltage_log_if_needed():
         lines = file_old.readlines();
         file_old.close();
         os.remove(logging_path + voltage_log_active_name);
-        file_old = open(logging_path + voltage_log_active_name,'w');
-
+        verify_file(logging_path + voltage_log_active_name);
+        file_old = open(logging_path + voltage_log_active_name,'a');
+        
         file_new = open(logging_path + voltage_log_name, "a");
         line_end_count = round(len(lines) / 2);
+        print('backup_voltage_log_if_needed - Line 0 to ' + str(line_end_count) + ' will be moved to the non-active file - I have a full length of ' + str(len(lines)));
         
         i = 0;
         while(i > len(lines)):
@@ -66,6 +68,9 @@ def backup_voltage_log_if_needed():
             else:
                 file_old.write(lines[i]);
             i = i + 1;
+        
+        file_new.close();
+        file_old.close();
 
 def verify_file(filewithpath):
     try:
