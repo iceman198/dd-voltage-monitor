@@ -7,7 +7,7 @@ log_file_name = "voltageMonitor.log";
 voltage_log_name = "voltageLog.csv";
 voltage_log_active_name = "voltageLogActive.csv";
 
-lines_to_keep = 24000;
+lines_to_keep = 30000;
 lines_to_avg = 300;
 
 file_size_max_mb = 8;
