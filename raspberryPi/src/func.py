@@ -55,7 +55,7 @@ def verify_file(filewithpath):
 def get_history():
     #print('get_history start');
     n = lines_to_keep;
-    myfilename = logging_path + voltage_log_name;
+    myfilename = logging_path + voltage_log_active_name;
     newlines = [];
     returnlines = [];
     file = open(myfilename,'r');
