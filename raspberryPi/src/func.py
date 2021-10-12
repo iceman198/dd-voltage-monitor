@@ -92,7 +92,7 @@ def get_history():
     lines = file.readlines(); #2021-10-11 13:34:28,13.032547808773282,566,13.078599214457993,568,23.555294007729803,1023,11.950339775182568,519
 
     if (len(lines) < n): n = len(lines);
-    one_third = round(len(lines) / 3);
+    my_portion = round(len(lines) / 4);
     i = 0;
     line_avg_a1, line_avg_a2, line_avg_a3, line_avg_a4, line_avg_v1, line_avg_v2, line_avg_v3, line_avg_v4 = [0]*8;
     line_max_a1, line_max_a2, line_max_a3, line_max_a4, line_max_v1, line_max_v2, line_max_v3, line_max_v4 = [0]*8;
@@ -142,7 +142,7 @@ def get_history():
         line_avg_a4 = line_avg_a4 + float(lineArr[8]);
         
         i = i + 1;
-        if (((i > lines_to_avg * 3) and (n > one_third)) or ((i > lines_to_avg) and (n <= one_third)) or (n <= 1)):
+        if (((i > lines_to_avg * 3) and (n > my_portion)) or ((i > lines_to_avg) and (n <= my_portion)) or (n <= 1)):
             line_avg_a1 = line_avg_a1 / i;
             line_avg_a2 = line_avg_a2 / i;
             line_avg_a3 = line_avg_a3 / i;
