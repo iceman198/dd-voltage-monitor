@@ -10,7 +10,7 @@ voltage_log_active_name = "voltageLogActive.csv";
 lines_to_keep = 16000;
 lines_to_avg = 300;
 
-file_size_max_mb = 5;
+file_size_max_mb = 10;
 
 def print_test():
     print('This is a test');
@@ -44,10 +44,27 @@ def update_file_if_needed(filepath, oldfilename):
         os.rename(filepath + oldfilename, filepath + new_file_name);
         verify_file(filepath + oldfilename);
 
-def backup_file_if_needed(filepath, oldfilename):
-    file_size = os.path.getsize(filepath + oldfilename);
+def backup_voltage_log_if_needed():
+    print('backup_voltage_log_if_needed - Im going to break the active file up');
+    file_size = os.path.getsize(logging_path + voltage_log_active_name);
     size_in_mb = file_size/1024**2;
-    
+    if (size_in_mb > (file_size_max_mb / 2)):
+        file_old = open(logging_path + voltage_log_active_name,'r');
+        lines = file_old.readlines();
+        file_old.close();
+        os.remove(logging_path + voltage_log_active_name);
+        file_old = open(logging_path + voltage_log_active_name,'w');
+
+        file_new = open(logging_path + voltage_log_name, "a");
+        line_end_count = round(len(lines) / 2);
+        
+        i = 0;
+        while(i > len(lines)):
+            if (i < line_end_count):
+                file_new.write(lines[i]);
+            else:
+                file_old.write(lines[i]);
+            i = i + 1;
 
 def verify_file(filewithpath):
     try:
