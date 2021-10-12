@@ -10,7 +10,7 @@ voltage_log_active_name = "voltageLogActive.csv";
 lines_to_keep = 16000;
 lines_to_avg = 300;
 
-file_size_max_mb = 3;
+file_size_max_mb = 8;
 
 def print_test():
     print('This is a test');
