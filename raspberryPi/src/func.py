@@ -8,7 +8,7 @@ voltage_log_name = "voltageLog.csv";
 voltage_log_active_name = "voltageLogActive.csv";
 
 lines_to_keep = 40000;
-lines_to_avg = 300;
+lines_to_avg = 150;
 
 file_size_max_mb = 8;
 
@@ -142,7 +142,7 @@ def get_history():
         line_avg_a4 = line_avg_a4 + float(lineArr[8]);
         
         i = i + 1;
-        if (((i > lines_to_avg * 3) and (n > my_portion)) or ((i > lines_to_avg) and (n <= my_portion)) or (n <= 1)):
+        if (((i > lines_to_avg * 6) and (n > my_portion)) or ((i > lines_to_avg) and (n <= my_portion)) or (n <= 1)):
             line_avg_a1 = line_avg_a1 / i;
             line_avg_a2 = line_avg_a2 / i;
             line_avg_a3 = line_avg_a3 / i;
