@@ -62,13 +62,13 @@ def backup_voltage_log_if_needed():
         print('backup_voltage_log_if_needed - Line 0 to ' + str(line_end_count) + ' will be moved to the non-active file - I have a full length of ' + str(len(lines)));
         
         i = 0;
-        while(i > len(lines)):
+        while(i < len(lines)):
             if (i < line_end_count):
                 file_new.write(lines[i]);
-                print('backup_voltage_log_if_needed - wrote to new file');
+                #print('backup_voltage_log_if_needed - wrote to new file');
             else:
                 file_old.write(lines[i]);
-                print('backup_voltage_log_if_needed - wrote to old file');
+                #print('backup_voltage_log_if_needed - wrote to old file');
             i = i + 1;
         
         file_new.close();
