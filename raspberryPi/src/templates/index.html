@@ -141,7 +141,7 @@
             //console.log(`getStats() ~ response: ${JSON.stringify(response)}`);
             if (response != null && response.status != null && response.status == "SUCCESS") {
                 if (response.voltage != null) { 
-                    //document.getElementById("voltage").innerHTML = `V1=${response.voltage.v1} || A1=${response.voltage.a1}<br/>V2=${response.voltage.v2} || A2=${response.voltage.a2}`;
+                    document.getElementById("voltage").innerHTML = `V1=${response.voltage.v1} || A1=${response.voltage.a1}<br/>V2=${response.voltage.v2} || A2=${response.voltage.a2}`;
                     document.getElementById("meterV").innerHTML = ""; // so we don't just keep adding in a new one
                     plot0 = $.jqplot('meterV',[[response.voltage.v1]],{
                         seriesDefaults: {
