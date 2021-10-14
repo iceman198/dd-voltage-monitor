@@ -79,6 +79,8 @@
             console.log('setupChart() ~ Making gethistory call');
             const response = await makeWebCall(`http://${myhost}/gethistory/`);
             console.log('setupChart() ~ gethistory call complete');
+            document.getElementById("chart1").innerHTML = "";
+            document.getElementById("chart2").innerHTML = "";
 
             const historyArr = response.history; // 2021-10-10 22:53:07,13.70,14.85,15.59,12.30\n
             let line1 = [];
@@ -166,8 +168,8 @@
             </div>
         </header>
         <div id="meterV" class="plot jqplot-target" style="width: 250px; height: 170px; position: relative;">Loading...</div>
-        <div id="chart1" class="jqplot-target" style="width: 800px; height: 200px; position: relative;">Loading...</div>
-        <div id="chart2" class="jqplot-target" style="width: 800px; height: 200px; position: relative;">Loading...</div>
+        <div id="chart1" class="jqplot-target" style="width: 1200px; height: 200px; position: relative;">Loading...</div>
+        <div id="chart2" class="jqplot-target" style="width: 1200px; height: 200px; position: relative;">Loading...</div>
         <div class="content">
         </div>
     </div>
