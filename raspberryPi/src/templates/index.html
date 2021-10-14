@@ -144,12 +144,23 @@
             if (response != null && response.status != null && response.status == "SUCCESS") {
                 if (response.voltage != null) { 
                     document.getElementById("voltage").innerHTML = `V1=${response.voltage.v1} || A1=${response.voltage.a1}<br/>V2=${response.voltage.v2} || A2=${response.voltage.a2}`;
+
                     document.getElementById("meterV").innerHTML = ""; // so we don't just keep adding in a new one
-                    plot0 = $.jqplot('meterV',[[response.voltage.v1]],{
+                    document.getElementById("meterDraw").innerHTML = ""; 
+                    
+                    let aDiff = response.voltage.a2 = response.voltage.a1;
+                    
+                    plotV = $.jqplot('meterV',[[response.voltage.v1]],{
                         seriesDefaults: {
                             renderer: $.jqplot.MeterGaugeRenderer,
-                            rendererOptions: { label: 'volts', min: 9, max: 16, intervals:[10,14,16], intervalColors:['#cc6666', '#66cc66', '#E7E658']
-                            }
+                            rendererOptions: { label: 'volts', min: 9, max: 16, intervals:[10,14,16], intervalColors:['#cc6666', '#66cc66', '#E7E658']}
+                        }
+                    });
+
+                    plotA = $.jqplot('meterV',[[aDiff]],{
+                        seriesDefaults: {
+                            renderer: $.jqplot.MeterGaugeRenderer,
+                            rendererOptions: { label: 'draw' } 
                         }
                     });
                 }
@@ -168,6 +179,7 @@
             </div>
         </header>
         <div id="meterV" class="plot jqplot-target" style="width: 250px; height: 170px; position: relative;">Loading...</div>
+        <div id="meterDraw" class="plot jqplot-target" style="width: 250px; height: 170px; position: relative;">Loading...</div>
         <div id="chart1" class="jqplot-target" style="width: 1200px; height: 200px; position: relative;">Loading...</div>
         <div id="chart2" class="jqplot-target" style="width: 1200px; height: 200px; position: relative;">Loading...</div>
         <div class="content">
