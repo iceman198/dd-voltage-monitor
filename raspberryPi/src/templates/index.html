@@ -148,7 +148,7 @@
                     document.getElementById("meterV").innerHTML = ""; // so we don't just keep adding in a new one
                     document.getElementById("meterDraw").innerHTML = ""; 
                     
-                    let aDiff = response.voltage.a2 = response.voltage.a1;
+                    let aDiff = response.voltage.a2 - response.voltage.a1;
                     
                     plotV = $.jqplot('meterV',[[response.voltage.v1]],{
                         seriesDefaults: {
