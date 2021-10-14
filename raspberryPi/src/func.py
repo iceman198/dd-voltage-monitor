@@ -7,7 +7,7 @@ log_file_name = "voltageMonitor.log";
 voltage_log_name = "voltageLog.csv";
 voltage_log_active_name = "voltageLogActive.csv";
 
-lines_to_keep = 8000;
+lines_to_keep = 10000;
 lines_to_avg = 72; #each line is 5 seconds...12 will do groups of 1min....72 will do groups of 5min
 
 file_size_max_mb = 8;
@@ -92,7 +92,7 @@ def get_history():
     lines = file.readlines(); #2021-10-11 13:34:28,13.032547808773282,566,13.078599214457993,568,23.555294007729803,1023,11.950339775182568,519
 
     if (len(lines) < n): n = len(lines);
-    my_portion = round(len(lines) / 8);
+    my_portion = round(len(lines) / 10);
     i = 0;
     line_avg_a1, line_avg_a2, line_avg_a3, line_avg_a4, line_avg_v1, line_avg_v2, line_avg_v3, line_avg_v4 = [0]*8;
     line_max_a1, line_max_a2, line_max_a3, line_max_a4, line_max_v1, line_max_v2, line_max_v3, line_max_v4 = [0]*8;
