@@ -101,6 +101,8 @@
 
             let plot1 = $.jqplot('chart1', [v1data], {
                 title:'Voltage History',
+                animate: true,
+                animateReplot: true,
                 axes:{
                     xaxis:{
                         renderer:$.jqplot.DateAxisRenderer, 
@@ -118,6 +120,8 @@
 
             let plot2 = $.jqplot('chart2', [adata], {
                 title:'Analog Diff History',
+                animate: true,
+                animateReplot: true,
                 axes:{
                     xaxis:{
                         renderer:$.jqplot.DateAxisRenderer, 
