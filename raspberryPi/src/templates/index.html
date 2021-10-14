@@ -108,9 +108,10 @@
                         tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:-40 }
                     },
                     yaxis:{
-                        rendererOptions:{
-                            tickRenderer:$.jqplot.CanvasAxisTickRenderer},
-                            tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:30, formatString:'%.2f'}
+                        rendererOptions:{ tickRenderer:$.jqplot.CanvasAxisTickRenderer},
+                        tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:30, formatString:'%.2f'},
+                        min: '7',
+                        max: '17'
                     }
                 },
                 series:[{ lineWidth:4, markerOptions:{ style:'square' } }],
@@ -123,9 +124,7 @@
                     xaxis:{
                         renderer:$.jqplot.DateAxisRenderer, 
                         rendererOptions:{ tickRenderer:$.jqplot.CanvasAxisTickRenderer },
-                        tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:-40 },
-                        min: '7',
-                        max: '17'
+                        tickOptions:{ fontSize:'10pt', fontFamily:'Tahoma', angle:-40 }
                     },
                     yaxis:{
                         rendererOptions:{ tickRenderer:$.jqplot.CanvasAxisTickRenderer },
