@@ -1,10 +1,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!--<meta name="viewport" content="width=300, initial-scale=5, maximum-scale=8.0, minimum-scale=3, user-scalable=0">-->
-
-    <!-- <link rel="stylesheet" href="../static/style.css"> -->
-    <!-- <script src="../static/jquery.min.js"></script> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
 
@@ -152,7 +148,7 @@
                     plotV = $.jqplot('meterV',[[response.voltage.v1]],{
                         seriesDefaults: {
                             renderer: $.jqplot.MeterGaugeRenderer,
-                            rendererOptions: { label: 'volts', min: 9, max: 16, intervals:[10,14,16], intervalColors:['#cc6666', '#66cc66', '#E7E658']}
+                            rendererOptions: { label: 'volts', min: 9, max: 16, intervals:[10,11.5,14,16], intervalColors:['#cc6666', '#E7E658', '#66cc66', '#E7E658']}
                         }
                     });
 
