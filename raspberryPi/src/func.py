@@ -7,7 +7,7 @@ log_file_name = "voltageMonitor.log";
 voltage_log_name = "voltageLog.csv";
 voltage_log_active_name = "voltageLogActive.csv";
 
-lines_to_keep = 18000;
+lines_to_keep = 9000;
 lines_to_avg = 72; #each line is 5 seconds...12 will do groups of 1min....72 will do groups of 5min
 
 file_size_max_mb = 8;
